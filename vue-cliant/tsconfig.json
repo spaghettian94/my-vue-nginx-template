@@ -8,6 +8,7 @@
     "moduleResolution": "node",
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
+    "experimentalDecorators": true,
     "sourceMap": true,
     "baseUrl": ".",
     "types": [
@@ -34,5 +35,9 @@
   ],
   "exclude": [
     "node_modules"
+  ],
+  "files": [
+    "src/shims-vue.d.ts",
+    "src/shims-tsx.d.ts"
   ]
 }
