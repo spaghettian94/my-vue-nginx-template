@@ -1,16 +1,30 @@
 version: '3'
 
 services:
+
+  vue:
+    build: 
+      context: ./vue
+      dockerfile: ./Dockerfile
+    container_name: '${PROJECT_NAME}-vue'
+    tty: true
+    environment:
+      TZ: 'Asia/Tokyo'
+    volumes:
+      - './vue:/opt/vue'
+    command: '/opt/vue/docker-build.sh'
+
   nginx:
     build: 
       context: ./nginx
       dockerfile: ./Dockerfile
     container_name: '${PROJECT_NAME}-nginx'
     tty: true
+    environment:
+      TZ: 'Asia/Tokyo'
     ports:
       - 80:80
     volumes:
       - './nginx/conf_d:/etc/nginx/conf.d'
-    environment:
-      TZ: 'Asia/Tokyo'
+      - './vue:/opt/vue'
 
